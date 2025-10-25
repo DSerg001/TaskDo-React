@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footer {
+  width: 100%;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #243b55, #141e30);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer p {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  display: inline-flex; /* որպեսզի link-ի հետ կարողանա spacing ունենալ */
+  align-items: center;
+  color: #fff; /* fallback color */
+}
+
+.footer p,
+.footer a {
+  background: linear-gradient(to right, #ffb347, #ffcc33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a {
+  margin-left: 5px; /* բացվածություն հիմնական տեքստի և link-ի միջև */
+}
+
+.footer a:hover {
+  filter: brightness(1.2);
+}
+
+/* 🔹 Extra Small Devices (phones, up to 480px) */
+@media (max-width: 480px) {
+  .footer {
+    font-size: 0.85rem;
+    padding: 12px;
+  }
+}
+
+/* 🔹 Small Devices (mobile landscape, up to 600px) */
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+
+/* 🔹 Medium Devices (tablets, up to 900px) */
+@media (max-width: 900px) {
+  .footer {
+    font-size: 0.95rem;
+    padding: 18px 20px;
+  }
+}
+
+/* 🔹 Large Devices (laptops, up to 1200px) */
+@media (max-width: 1200px) {
+  .footer {
+    font-size: 1rem;
+    padding: 20px 25px;
+  }
+}
+
+/* 🔹 Extra Large Devices (desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .footer {
+    font-size: 1.05rem;
+    padding: 25px 30px;
+  }
+}
+
+/* 🔹 Ultra-Wide Screens (very large monitors) */
+@media (min-width: 1800px) {
+  .footer {
+    font-size: 1.15rem;
+    padding: 30px 40px;
+  }
+}

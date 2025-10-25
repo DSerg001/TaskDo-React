@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.taskdo {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #243b55, #141e30);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Ձախ վերև TaskDo */
+.taskdo-header {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  display: flex;
+  align-items: center; /* icon և տեքստ հավասար ուղղությամբ */
+  gap: 10px; /* icon և տեքստի միջև բացվածություն */
+}
+
+.taskdo-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* icon և տեքստի միջակայք */
+  background: linear-gradient(to right, #ffb347, #ffcc33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Search գոտի */
+.search-area {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center; /* icon և տեքստ հավասար ուղղությամբ */
+  gap: 10px; /* icon և տեքստի միջև բացվածություն */
+}
+
+.search-area input {
+  width: 100%;
+  padding: 12px 48px 12px 18px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.search-area input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Icon-ի դիրքը */
+.search-icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+  color: #ffb347;
+}
+
+/* Վերևի չորս կոճակ */
+.status-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: -33px;
+  flex-wrap: wrap;
+}
+
+.status-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.deleted {
+  background: #c0392b;
+  color: #fff;
+}
+
+.progress {
+  background: #2980b9;
+  color: #fff;
+}
+
+.done {
+  background: #27ae60;
+  color: #fff;
+}
+
+.status-buttons button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Task գոտի */
+.task-container {
+  position: relative;
+  margin-top: 280px;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  max-width: 500px;
+}
+
+/* input style */
+.task-container input {
+  width: 100%;
+  padding: 12px 50px 12px 16px; /* աջ padding՝ icon-ի համար */
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.task-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* icon style */
+.add-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.7rem;
+  color: #ffb347;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.add-icon:hover {
+  transform: translateY(-50%) scale(1.1);
+  color: #ffd86f;
+}
+
+/* Task ցուցակ */
+.task-list {
+  margin-top: 40px;
+  list-style: none;
+  padding: 0;
+  width: 80%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Icon և տեքստի միջև բացվածություն */
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.task-icon {
+  color: #ffb347; /* icon-ի գույն */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.task-icon:hover {
+  color: #ffd86f; /* hover էֆեկտ */
+}
+
+.task-text {
+  flex: 1; /* տեքստը զբաղեցնում է մնացած տարածքը */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .taskdo-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .status-buttons {
+    gap: 10px;
+  }
+
+  .task-container {
+    flex-direction: column;
+  }
+
+  .task-container button {
+    width: 100%;
+  }
+}
