@@ -7,11 +7,14 @@ const TypingInput = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [typingForward, setTypingForward] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
+  const [isFocused, setIsFocused] = useState(false);
 
   const { searchQuery, setSearchQuery } = useTaskStore();
 
-  // Typing animation
+  // Typing animation (միայն երբ input-ը դատարկ է և focus-ի մեջ չէ)
   useEffect(() => {
+    if (searchQuery !== "" || isFocused) return;
+
     const interval = setInterval(() => {
       setDisplayedText((prev) => {
         if (typingForward) {
@@ -33,22 +36,37 @@ const TypingInput = () => {
     }, 200);
 
     return () => clearInterval(interval);
-  }, [typingForward]);
+  }, [typingForward, searchQuery, isFocused]);
 
   // Cursor blinking
   useEffect(() => {
+    if (searchQuery !== "" || isFocused) return;
     const cursorInterval = setInterval(() => {
       setShowCursor((prev) => !prev);
     }, 500);
     return () => clearInterval(cursorInterval);
-  }, []);
+  }, [searchQuery, isFocused]);
 
   return (
     <input
       type="text"
       className="typing-input"
       value={searchQuery}
-      placeholder={displayedText + (showCursor ? "|" : "")}
+      placeholder={
+        isFocused
+          ? "" // focus-ի ժամանակ placeholder չլինի
+          : searchQuery === ""
+          ? displayedText + (showCursor ? "|" : "")
+          : ""
+      }
+      onFocus={() => {
+        setIsFocused(true);
+        setDisplayedText(placeholderText); // focus-ի պահին անմիջապես ամբողջ տեքստը ցույց չտա
+      }}
+      onBlur={() => {
+        setIsFocused(false);
+        setDisplayedText(placeholderText); // focus-ից դուրս գալիս՝ ցույց տա ամբողջ “Search task...”
+      }}
       onChange={(e) => setSearchQuery(e.target.value)}
     />
   );

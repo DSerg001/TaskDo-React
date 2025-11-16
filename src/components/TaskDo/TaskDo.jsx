@@ -1,37 +1,30 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { FaPlusCircle } from "react-icons/fa";
-import { MdCancel } from "react-icons/md";
-import { IoMdCheckmarkCircle } from "react-icons/io";
+import TaskBox from "../TaskBox/TaskBox";
+import AddTaskInput from "../AddTaskInput/AddTaskInput";
 import TypingInput from "../TypingInput/TypingInput";
 import { useTaskStore } from "../../store/store";
 import { Link } from "react-router-dom";
 import "./TaskDo.css";
 
 const TaskDo = ({ current }) => {
-  const [task, setTask] = useState("");
   const tasks = useTaskStore((state) => state.tasks);
   const addTask = useTaskStore((state) => state.addTask);
   const deleteTask = useTaskStore((state) => state.deleteTask);
   const completeTask = useTaskStore((state) => state.completeTask);
+  const editTaskStore = useTaskStore((state) => state.editTask);
   const searchQuery = useTaskStore((state) => state.searchQuery) || "";
 
   const listRef = useRef(null);
 
-  // Scroll to bottom on tasks change
+  // Auto-scroll when tasks or status changes
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   }, [tasks, current]);
 
-  const handleAddTask = () => {
-    if (task.trim() !== "") {
-      addTask(task);
-      setTask("");
-    }
-  };
-
+  // Filter tasks by status + search
   const filteredTasks = tasks.filter(
     (t) =>
       t.status === current &&
@@ -40,15 +33,18 @@ const TaskDo = ({ current }) => {
 
   return (
     <section className="taskdo">
+      {/* Header */}
       <header className="taskdo-header">
         <h1>TaskDo</h1>
       </header>
 
+      {/* Search */}
       <div className="search-area">
         <TypingInput />
         <FaMagnifyingGlass className="search-icon" />
       </div>
 
+      {/* Navigation buttons */}
       <div className="status-buttons">
         <Link to="/deleted">
           <button className="deleted">Deleted</button>
@@ -61,44 +57,20 @@ const TaskDo = ({ current }) => {
         </Link>
       </div>
 
+      {/* AddTaskInput ONLY for in-progress */}
       {current === "in-progress" && (
-        <div className="task-container">
-          <input
-            type="text"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-            placeholder="Write your task here..."
-            onKeyDown={(e) => e.key === "Enter" && handleAddTask()}
-          />
-          <FaPlusCircle className="add-icon" onClick={handleAddTask} />
-        </div>
+        <AddTaskInput hasTasks={filteredTasks.length > 0} />
       )}
 
-      <ul className="task-list" ref={listRef}>
-        {filteredTasks.length === 0 ? (
-          <p className="empty">No tasks found</p>
-        ) : (
-          filteredTasks.map((t) => (
-            <li key={t.id} className="task-item">
-              <span className="task-text">{t.text || "(No text)"}</span>
-              {current === "in-progress" && (
-                <div className="task-actions">
-                  <MdCancel
-                    className="task-icon cancel-icon"
-                    onClick={() => deleteTask(t.id)}
-                    title="Delete"
-                  />
-                  <IoMdCheckmarkCircle
-                    className="task-icon done-icon"
-                    onClick={() => completeTask(t.id)}
-                    title="Done"
-                  />
-                </div>
-              )}
-            </li>
-          ))
-        )}
-      </ul>
+      {/* Task Box */}
+      <TaskBox
+        current={current}
+        filteredTasks={filteredTasks}
+        deleteTask={deleteTask}
+        completeTask={completeTask}
+        listRef={listRef}
+        editTask={editTaskStore}
+      />
     </section>
   );
 };
