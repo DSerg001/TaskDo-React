@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { IoMdCheckmarkCircle } from "react-icons/io";
+import { IoCheckmarkOutline } from "react-icons/io5";
 import TypingInput from "../../components/TypingInput/TypingInput";
 import { useTaskStore } from "../../store/store";
 import "./Done.css";
@@ -29,13 +29,13 @@ const Done = () => {
 
       <div className="status-buttons">
         <Link to="/deleted">
-          <button className="deleted">Deleted</button>
+          <button className="header-deleted">Deleted</button>
         </Link>
         <Link to="/in-progress">
-          <button className="progress">In Progress</button>
+          <button className="header-progress">In Progress</button>
         </Link>
         <Link to="/done">
-          <button className="done">Done</button>
+          <button className="header-done">Done</button>
         </Link>
       </div>
 
@@ -47,10 +47,10 @@ const Done = () => {
             <li key={t.id} className="task-item">
               <span className="task-text">{t.text || "(No text)"}</span>
               <div className="task-actions">
-                <IoMdCheckmarkCircle
-                  className="task-icon done-icon"
+                <IoCheckmarkOutline
+                  className="task-done-icon"
                   onClick={() => removeFromDone(t.id)}
-                  title="Move back to In Progress"
+                  title="Confirm task completion"
                 />
               </div>
             </li>

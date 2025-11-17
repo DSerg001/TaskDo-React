@@ -47,13 +47,13 @@ const TaskDo = ({ current }) => {
       {/* Navigation buttons */}
       <div className="status-buttons">
         <Link to="/deleted">
-          <button className="deleted">Deleted</button>
+          <button className="header-deleted">Deleted</button>
         </Link>
         <Link to="/in-progress">
-          <button className="progress">In Progress</button>
+          <button className="header-progress">In Progress</button>
         </Link>
         <Link to="/done">
-          <button className="done">Done</button>
+          <button className="header-done">Done</button>
         </Link>
       </div>
 

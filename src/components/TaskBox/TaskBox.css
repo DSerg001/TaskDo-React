@@ -29,16 +29,6 @@
   flex: 1;
 }
 
-.task-icon {
-  cursor: pointer;
-  color: #ffb347;
-  transition: 0.3s;
-}
-
-.task-icon:hover {
-  color: #ffd86f;
-}
-
 .edit-button {
   cursor: pointer;
   color: #fff;
@@ -56,7 +46,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
 
@@ -106,37 +96,98 @@
 }
 
 .close-icon:hover {
-  color: #ffd86f    ;
+  color: #ffd86f;
 }
 
 .saveEdit {
-    background-color: green;
+  background-color: green;
 }
 
 .saveEdit:hover {
-    background-color: darkgreen;
+  background-color: darkgreen;
 }
 
 .cancelEdit {
-    background-color: red;
+  background-color: red;
 }
 
 .cancelEdit:hover {
-    background-color: darkred;
+  background-color: darkred;
 }
 
 .undoEdit {
-    background-color: blue;
+  background-color: blue;
 }
 
 .undoEdit:hover {
-    background-color: darkblue;
+  background-color: darkblue;
 }
 
 .redoEdit {
-    background-color: blue;
+  background-color: blue;
 }
 
 .redoEdit:hover {
-    background-color: darkblue;
+  background-color: darkblue;
+}
+
+/* Cancel Icon */
+.task-cancel-icon {
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.task-cancel-icon:hover {
+  background-color: darkred;
+}
+
+/* Restore Icon */
+
+.task-restore-icon {
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: blue;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.task-restore-icon:hover {
+  background-color: darkblue;
+}
+
+/* Done Icon */
+.task-done-icon {
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.task-done-icon:hover {
+  background-color: darkgreen;
 }

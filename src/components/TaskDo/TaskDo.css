@@ -99,17 +99,17 @@
   transition: all 0.3s ease;
 }
 
-.deleted {
+.header-deleted {
   background: red;
   color: #fff;
 }
 
-.progress {
+.header-progress {
   background: #2980b9;
   color: #fff;
 }
 
-.done {
+.header-done {
   background: green;
   color: #fff;
 }
