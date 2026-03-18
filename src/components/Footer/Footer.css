@@ -1,51 +1,57 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Footer container */
 .footer {
   width: 100%;
   padding: 20px 25px;
   background: linear-gradient(135deg, #243b55, #141e30);
   text-align: center;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  /* Smooth shadow */
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Base text style */
 .footer p {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  display: inline-flex; /* որպեսզի link-ի հետ կարողանա spacing ունենալ */
+  display: inline-flex;
   align-items: center;
-  color: #fff; /* fallback color */
-}
+  justify-content: center;
 
-.footer p,
-.footer a {
+  /* Gradient text */
   background: linear-gradient(to right, #ffb347, #ffcc33);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-decoration: none;
-  transition: color 0.3s ease;
 }
 
+/* Link style */
 .footer a {
-  margin-left: 5px; /* բացվածություն հիմնական տեքստի և link-ի միջև */
+  margin-left: 6px;
+  text-decoration: none;
+
+  background: linear-gradient(to right, #ffb347, #ffcc33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  transition: 0.25s ease-in-out;
 }
 
 .footer a:hover {
-  filter: brightness(1.2);
+  filter: brightness(1.3);
+  transform: translateY(-1px);
 }
 
-/* 🔹 Extra Small Devices (phones, up to 480px) */
+/* Responsive breakpoints */
 @media (max-width: 480px) {
   .footer {
     font-size: 0.85rem;
@@ -53,42 +59,30 @@
   }
 }
 
-/* 🔹 Small Devices (mobile landscape, up to 600px) */
 @media (max-width: 600px) {
   .footer {
     font-size: 0.9rem;
-    padding: 15px;
+    padding: 14px;
   }
 }
 
-/* 🔹 Medium Devices (tablets, up to 900px) */
 @media (max-width: 900px) {
   .footer {
     font-size: 0.95rem;
-    padding: 18px 20px;
+    padding: 16px 18px;
   }
 }
 
-/* 🔹 Large Devices (laptops, up to 1200px) */
-@media (max-width: 1200px) {
-  .footer {
-    font-size: 1rem;
-    padding: 20px 25px;
-  }
-}
-
-/* 🔹 Extra Large Devices (desktops, 1200px and up) */
 @media (min-width: 1200px) {
   .footer {
-    font-size: 1.05rem;
-    padding: 25px 30px;
+    font-size: 1.1rem;
+    padding: 22px 28px;
   }
 }
 
-/* 🔹 Ultra-Wide Screens (very large monitors) */
 @media (min-width: 1800px) {
   .footer {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     padding: 30px 40px;
   }
 }

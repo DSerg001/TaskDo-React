@@ -55,7 +55,8 @@
   color: white;
   padding: 12px;
   border-radius: 8px;
-  width: 250px;
+  width: 500px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -177,7 +178,7 @@
   width: 37px;
   height: 37px;
   padding: 8px;
-  background-color: green;
+  background-color: #058c00;
   color: white;
   border-radius: 50%;
   cursor: pointer;

@@ -26,8 +26,9 @@
   gap: 10px; /* icon և տեքստի միջև բացվածություն */
 }
 
-.taskdo-header h1 {
+.taskdo-header .website-logo {
   font-size: 2rem;
+  text-decoration: none;
   font-weight: 700;
   letter-spacing: 1px;
   display: flex;
@@ -110,13 +111,207 @@
 }
 
 .header-done {
-  background: green;
+  background: #058c00;
   color: #fff;
 }
 
 .status-buttons button:hover {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  color: #ffb347;
+}
+
+/* Overlay */
+.edit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px; /* padding small screens */
+}
+
+/* Modal */
+.edit-modal {
+  width: 100%;
+  max-width: 500px; /* flexible width */
+  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.25rem;
+}
+
+.close-icon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #ffb347;
+  transition: 0.2s;
+}
+.close-icon:hover {
+  color: #ffd86f;
+}
+
+.edit-modal textarea {
+  width: 100%;
+  min-height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: sans-serif;
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 15px 0;
+  resize: none;
+}
+
+/* Buttons */
+.edit-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-buttons button {
+  flex: 1;
+  margin-top: 125px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+/* Individual button colors */
+.saveEdit {
+  background-color: #28a745;
+  color: white;
+}
+.saveEdit:hover {
+  background-color: #1e7e34;
+}
+
+.cancelEdit {
+  background-color: #dc3545;
+  color: white;
+}
+.cancelEdit:hover {
+  background-color: #a71d2a;
+}
+
+.undoEdit {
+  background-color: #007bff;
+  color: white;
+}
+.undoEdit:hover {
+  background-color: #0056b3;
+}
+
+.redoEdit {
+  background-color: #007bff;
+  color: white;
+}
+.redoEdit:hover {
+  background-color: #0056b3;
+}
+
+/* Disabled buttons */
+.edit-buttons button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.task-cancel-icon {
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.task-cancel-icon:hover {
+  background-color: darkred;
+}
+
+/* Restore Icon */
+
+.task-restore-icon {
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: blue;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.task-restore-icon:hover {
+  background-color: darkblue;
+}
+
+/* Done Icon */
+.task-done-icon {
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background-color: #058c00;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: 0.2s ease;
+}
+
+.task-done-icon:hover {
+  background-color: darkgreen;
 }
 
 /* Responsive */
@@ -135,5 +330,59 @@
 
   .task-container button {
     width: 100%;
+  }
+
+  .edit-modal {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .edit-modal input {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+  .edit-buttons button {
+    flex: 1 1 100%; /* buttons stack vertically */
+  }
+}
+
+/* Media Query փոքր էկրանների համար (օրինակ՝ 768px-ից ցածր) */
+@media (max-width: 768px) {
+  .search-area {
+    right: 20px; /* Մի փոքր մոտեցնենք եզրին */
+    top: 15px;
+  }
+
+  .search-area input {
+    width: 170px; /* Սկզբնական կոմպակտ չափսը */
+    transition:
+      width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.3s; /* Սահուն անցում */
+    padding: 10px 40px 10px 15px; /* Մի փոքր փոքրացրած padding */
+  }
+
+  /* Երբ սեղմում ենք input-ի վրա (Focus) */
+  .search-area input:focus {
+    width: 500px; /* Որքան մեծանա գրելիս */
+    background: rgba(255, 255, 255, 0.25); /* Մի քիչ ավելի պարզ դառնա */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .status-buttons {
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .status-buttons button {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Շատ փոքր հեռախոսների համար (օրինակ՝ 400px-ից ցածր) */
+@media (max-width: 480px) {
+  .search-area input:focus {
+    width: 180px; /* Շատ փոքր էկրանի վրա չափից շատ չմեծանա */
   }
 }
