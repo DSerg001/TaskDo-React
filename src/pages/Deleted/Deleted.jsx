@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { IoCloseOutline, IoCheckmarkOutline } from "react-icons/io5";
+import { MdOutlineClose, MdOutlineDone } from "react-icons/md";
 import { IoMdRefresh } from "react-icons/io";
 import TypingInput from "../../components/TypingInput/TypingInput";
 import { useTaskStore } from "../../store/store";
@@ -52,7 +52,7 @@ const Deleted = () => {
             <li key={t.id} className="task-item">
               <span className="task-text">{t.text || "(No text)"}</span>
               <div className="task-actions">
-                <IoCloseOutline
+                <MdOutlineClose
                   className="task-cancel-icon"
                   onClick={() => permanentDelete(t.id)}
                   title="Delete permanently"
@@ -62,7 +62,7 @@ const Deleted = () => {
                   onClick={() => restoreTask(t.id)}
                   title="Restore to In Progress"
                 />
-                <IoCheckmarkOutline
+                <MdOutlineDone
                   className="task-done-icon"
                   onClick={() => moveToDone(t.id)}
                   title="Move to Done"

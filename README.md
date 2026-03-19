@@ -1,16 +1,24 @@
-# React + Vite
+# 🚀 TaskDo - Professional React Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TaskDo is a high-performance, minimalist task management application built with **React**, **Zustand**, and **Framer Motion**. It helps users organize their daily workflow with a smooth UI and persistent data storage.
 
-Currently, two official plugins are available:
+## 🔗 Live Demo
+[**Click here to view the Live App**](https://taskdo-react.vercel.app) 👈 *Google-ի ռոբոտները կգան այս հղումով*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+* **Modern UI/UX:** Clean design with smooth animations.
+* **Persistent Storage:** Tasks are saved and remain even after page reload.
+* **Dynamic Routing:** Easy navigation between In-Progress, Done, and Deleted tasks.
+* **SEO Optimized:** Meta tags and Helmet integration for better visibility.
 
-## React Compiler
+## 🛠️ Tech Stack
+* **Frontend:** React.js, HTML5, CSS3 (Flexbox/Grid)
+* **State Management:** Zustand
+* **Animations:** Framer Motion
+* **Routing:** React Router Dom
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 👨‍💻 Author
+**Sergey Danielyan** - [GitHub Profile](https://github.com/DSerg001)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+*Built with ❤️ in Armenia.*

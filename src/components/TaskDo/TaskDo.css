@@ -5,7 +5,8 @@
 }
 
 .taskdo {
-  height: 100vh;
+  /* Փոխված է height-ը min-height-ի */
+  min-height: 100vh; 
   width: 100%;
   background: linear-gradient(135deg, #243b55, #141e30);
   color: #fff;
@@ -13,7 +14,11 @@
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  padding-bottom: 40px; /* Սա կարևոր է, որ վերջին թասքը չկպնի ֆուտերին */
   font-family: "Poppins", sans-serif;
+  
+  /* Ապահովության համար, որ ներքին տարրերը ճիշտ դասավորվեն */
+  box-sizing: border-box; 
 }
 
 /* Ձախ վերև TaskDo */
@@ -313,6 +318,7 @@
 .task-done-icon:hover {
   background-color: darkgreen;
 }
+
 
 /* Responsive */
 @media (max-width: 600px) {

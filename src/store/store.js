@@ -40,7 +40,7 @@ export const useTaskStore = create((set) => ({
   editTask: (id, newText) =>
     set((state) => {
       const updated = state.tasks.map((t) =>
-        t.id === id ? { ...t, text: newText.trim() || "(No text)" } : t
+        t.id === id ? { ...t, text: newText.trim() || "(No text)" } : t,
       );
       saveTasks(updated);
       return { tasks: updated };
@@ -50,7 +50,7 @@ export const useTaskStore = create((set) => ({
   deleteTask: (id) =>
     set((state) => {
       const updated = state.tasks.map((t) =>
-        t.id === id ? { ...t, status: "deleted" } : t
+        t.id === id ? { ...t, status: "deleted" } : t,
       );
       saveTasks(updated);
       return { tasks: updated };
@@ -60,7 +60,7 @@ export const useTaskStore = create((set) => ({
   completeTask: (id) =>
     set((state) => {
       const updated = state.tasks.map((t) =>
-        t.id === id ? { ...t, status: "done" } : t
+        t.id === id ? { ...t, status: "done" } : t,
       );
       saveTasks(updated);
       return { tasks: updated };
@@ -70,7 +70,7 @@ export const useTaskStore = create((set) => ({
   restoreTask: (id) =>
     set((state) => {
       const updated = state.tasks.map((t) =>
-        t.id === id ? { ...t, status: "in-progress" } : t
+        t.id === id ? { ...t, status: "in-progress" } : t,
       );
       saveTasks(updated);
       return { tasks: updated };
@@ -80,7 +80,7 @@ export const useTaskStore = create((set) => ({
   moveToDone: (id) =>
     set((state) => {
       const updated = state.tasks.map((t) =>
-        t.id === id ? { ...t, status: "done" } : t
+        t.id === id ? { ...t, status: "done" } : t,
       );
       saveTasks(updated);
       return { tasks: updated };

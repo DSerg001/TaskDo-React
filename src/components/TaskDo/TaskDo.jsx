@@ -1,18 +1,16 @@
 import { useRef, useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import {
-  IoCloseOutline,
-  IoCheckmarkOutline,
-  IoArrowUndoOutline,
-} from "react-icons/io5"; // Added Restore Icon
-import { TbDotsVertical } from "react-icons/tb";
+import { IoArrowUndoOutline } from "react-icons/io5";
+import { MdOutlineClose, MdOutlineDone } from "react-icons/md";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { ImUndo, ImRedo } from "react-icons/im";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import AddTaskInput from "../AddTaskInput/AddTaskInput";
 import TypingInput from "../TypingInput/TypingInput";
 import { useTaskStore } from "../../store/store";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import "./TaskDo.css";
 
 const TaskDo = ({ current }) => {
@@ -20,7 +18,7 @@ const TaskDo = ({ current }) => {
   const deleteTask = useTaskStore((state) => state.deleteTask);
   const completeTask = useTaskStore((state) => state.completeTask);
   const editTask = useTaskStore((state) => state.editTask);
-  const restoreTask = useTaskStore((state) => state.restoreTask); // Ensure this exists in your store
+  const restoreTask = useTaskStore((state) => state.restoreTask);
   const searchQuery = useTaskStore((state) => state.searchQuery) || "";
 
   const listRef = useRef(null);
@@ -29,14 +27,12 @@ const TaskDo = ({ current }) => {
   const [history, setHistory] = useState([]);
   const [step, setStep] = useState(0);
 
-  // Auto scroll
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   }, [tasks, current]);
 
-  // ESC close
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") closeModal();
@@ -96,6 +92,28 @@ const TaskDo = ({ current }) => {
 
   return (
     <section className="taskdo">
+      <Helmet>
+        <title>TaskDo | Professional React Task Manager</title>
+        <meta
+          name="description"
+          content="TaskDo is a fast and simple to-do list app built with React. Organize your workflow, manage tasks, and boost productivity."
+        />
+        <meta
+          name="keywords"
+          content="taskdo, todo list, react task manager, to do list react, task management, Sergey Danielyan"
+        />
+
+        {/* Open Graph (Facebook/LinkedIn-ի համար) */}
+        <meta
+          property="og:title"
+          content="TaskDo - Efficient Task Management"
+        />
+        <meta
+          property="og:description"
+          content="Organize your life with TaskDo. The best React-based to-do list."
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <header className="taskdo-header">
         <Link to="/in-progress" className="website-logo">
           TaskDo
@@ -131,12 +149,11 @@ const TaskDo = ({ current }) => {
               className="edit-button"
               title="Open Edit Modal"
             >
-              <TbDotsVertical />
+              <BsThreeDotsVertical />
             </div>
             <span>{t.text}</span>
 
             <div className="task-actions">
-              {/* Show Restore button if task is Deleted or Done */}
               {(current === "deleted" || current === "done") && (
                 <IoArrowUndoOutline
                   className="task-restore-icon"
@@ -144,15 +161,14 @@ const TaskDo = ({ current }) => {
                 />
               )}
 
-              {/* Show Complete/Delete buttons only in Progress */}
               {current === "in-progress" && (
                 <>
-                  <IoCloseOutline
+                  <MdOutlineClose
                     className="task-cancel-icon"
                     onClick={() => deleteTask(t.id)}
                     title="Delete Task"
                   />
-                  <IoCheckmarkOutline
+                  <MdOutlineDone
                     className="task-done-icon"
                     onClick={() => completeTask(t.id)}
                     title="Done Task"
@@ -164,17 +180,18 @@ const TaskDo = ({ current }) => {
         ))}
       </ul>
 
-      {/* Modal remains the same */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {selectedTask && (
-          <motion.div
+          <div
+            key="modal-overlay"
             className="edit-modal-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
           >
-            <motion.div
+            <div
+              key="modal-content"
               className="edit-modal"
               initial={{ scale: 0.8, y: 40, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -182,9 +199,7 @@ const TaskDo = ({ current }) => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-header">
-                <h3>
-                   Edit Task
-                </h3>
+                <h3>Edit Task</h3>
                 <IoMdClose className="close-icon" onClick={closeModal} />
               </div>
               <textarea
@@ -218,8 +233,8 @@ const TaskDo = ({ current }) => {
                   <ImRedo /> Redo
                 </button>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
       </AnimatePresence>
     </section>

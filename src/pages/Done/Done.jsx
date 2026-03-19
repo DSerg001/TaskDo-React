@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { IoCheckmarkOutline } from "react-icons/io5";
+import { MdOutlineDone } from "react-icons/md";
 import TypingInput from "../../components/TypingInput/TypingInput";
 import { useTaskStore } from "../../store/store";
 import "./Done.css";
@@ -49,7 +49,7 @@ const Done = () => {
             <li key={t.id} className="task-item">
               <span className="task-text">{t.text || "(No text)"}</span>
               <div className="task-actions">
-                <IoCheckmarkOutline
+                <MdOutlineDone
                   className="task-done-icon"
                   onClick={() => removeFromDone(t.id)}
                   title="Confirm task completion"

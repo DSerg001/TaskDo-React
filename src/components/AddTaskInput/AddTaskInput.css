@@ -3,33 +3,41 @@
   justify-content: center;
   width: 90%;
   max-width: 700px;
-  z-index: 50;
+  z-index: 100; /* Ավելի բարձր, որ թասքերը տակով անցնեն */
 }
 
+/* Երբ input-ը պետք է լինի էջի կենտրոնում (առաջին թասքն ավելացնելիս) */
 .task-container.centered {
-  position: absolute;
+  position: fixed; /* Փոխվեց absolute-ից */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+/* Երբ input-ը պետք է լինի ներքևում ֆիքսված (երբ արդեն թասքեր կան) */
 .task-container.fixed-bottom {
-  position: absolute;
-  bottom: 40px;
+  position: fixed; /* Փոխվեց absolute-ից */
+  bottom: 20px;    /* Մի փոքր բարձրացրու ֆուտերից */
   left: 50%;
   transform: translateX(-50%);
+  background: rgba(20, 30, 48, 0.8); /* Ավելացրու ֆոն, որ թասքերը տակից չերևան */
+  backdrop-filter: blur(10px);      /* Գեղեցիկ էֆեկտ թափանցիկության համար */
+  border-radius: 30px;
+  padding: 5px;
 }
 
 .task-container input {
   width: 100%;
   padding: 12px 50px 12px 16px;
   border-radius: 25px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   outline: none;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
   font-size: 1rem;
 }
+
+/* Մնացածը նույնն է... */
 
 .task-container input::placeholder {
   color: rgba(255, 255, 255, 0.7);
