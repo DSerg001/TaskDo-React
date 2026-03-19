@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { MdEdit, MdCancel } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
 import {
   IoCloseOutline,
   IoCheckmarkOutline,
@@ -97,7 +97,9 @@ const TaskDo = ({ current }) => {
   return (
     <section className="taskdo">
       <header className="taskdo-header">
-        <Link to="/in-progress" className="website-logo">TaskDo</Link>
+        <Link to="/in-progress" className="website-logo">
+          TaskDo
+        </Link>
       </header>
 
       <div className="status-buttons">
@@ -181,9 +183,9 @@ const TaskDo = ({ current }) => {
             >
               <div className="modal-header">
                 <h3>
-                  <MdEdit /> Edit Task
+                   Edit Task
                 </h3>
-                <MdCancel className="close-icon" onClick={closeModal} />
+                <IoMdClose className="close-icon" onClick={closeModal} />
               </div>
               <textarea
                 value={text}

@@ -19,7 +19,9 @@ const Done = () => {
   return (
     <section className="taskdo">
       <header className="taskdo-header">
-        <h1>TaskDo</h1>
+        <Link to="/in-progress" className="website-logo">
+          TaskDo
+        </Link>
       </header>
 
       <div className="search-area">

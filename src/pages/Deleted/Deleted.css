@@ -17,11 +17,14 @@
 }
 
 /* Title */
-.deleted-page h1 {
+.deleted-page .website-logo {
   font-size: 2rem;
+  text-decoration: none;
   font-weight: 700;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* icon և տեքստի միջակայք */
   background: linear-gradient(to right, #ffb347, #ffcc33);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
