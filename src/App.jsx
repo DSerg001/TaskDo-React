@@ -1,4 +1,8 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import InProgress from "./pages/InProgress/InProgress";
+import Done from "./pages/Done/Done";
+import Deleted from "./pages/Deleted/Deleted";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
