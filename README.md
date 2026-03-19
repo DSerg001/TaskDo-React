@@ -1,4 +1,4 @@
-# 🚀 TaskDo - Professional React Task Manager
+# 🚀 TaskDo | Simple & Fast Todo List
 
 TaskDo is a high-performance, minimalist task management application built with **React**, **Zustand**, and **Framer Motion**. It helps users organize their daily workflow with a smooth UI and persistent data storage.
 
